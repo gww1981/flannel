@@ -1,5 +1,5 @@
 ---
-apiVersion: policy/v1beta1
+apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: psp.flannel.unprivileged
@@ -130,7 +130,7 @@ data:
       }
     }
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: kube-flannel-ds-amd64
@@ -139,9 +139,6 @@ metadata:
     tier: node
     app: flannel
 spec:
-  selector:
-    matchLabels:
-      app: flannel
   template:
     metadata:
       labels:
@@ -157,7 +154,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: quay.io/coreos/flannel:v0.11.0-amd64
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64
         command:
         - cp
         args:
@@ -171,7 +168,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: quay.io/coreos/flannel:v0.11.0-amd64
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64
         command:
         - /opt/bin/flanneld
         args:
@@ -213,7 +210,7 @@ spec:
           configMap:
             name: kube-flannel-cfg
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: kube-flannel-ds-arm64
@@ -222,9 +219,6 @@ metadata:
     tier: node
     app: flannel
 spec:
-  selector:
-    matchLabels:
-      app: flannel
   template:
     metadata:
       labels:
@@ -240,7 +234,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: quay.io/coreos/flannel:v0.11.0-arm64
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm64
         command:
         - cp
         args:
@@ -254,7 +248,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: quay.io/coreos/flannel:v0.11.0-arm64
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm64
         command:
         - /opt/bin/flanneld
         args:
@@ -296,7 +290,7 @@ spec:
           configMap:
             name: kube-flannel-cfg
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: kube-flannel-ds-arm
@@ -305,9 +299,6 @@ metadata:
     tier: node
     app: flannel
 spec:
-  selector:
-    matchLabels:
-      app: flannel
   template:
     metadata:
       labels:
@@ -323,7 +314,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: quay.io/coreos/flannel:v0.11.0-arm
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm
         command:
         - cp
         args:
@@ -337,7 +328,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: quay.io/coreos/flannel:v0.11.0-arm
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm
         command:
         - /opt/bin/flanneld
         args:
@@ -379,7 +370,7 @@ spec:
           configMap:
             name: kube-flannel-cfg
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: kube-flannel-ds-ppc64le
@@ -388,9 +379,6 @@ metadata:
     tier: node
     app: flannel
 spec:
-  selector:
-    matchLabels:
-      app: flannel
   template:
     metadata:
       labels:
@@ -406,7 +394,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: quay.io/coreos/flannel:v0.11.0-ppc64le
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-ppc64le
         command:
         - cp
         args:
@@ -420,7 +408,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: quay.io/coreos/flannel:v0.11.0-ppc64le
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-ppc64le
         command:
         - /opt/bin/flanneld
         args:
@@ -462,7 +450,7 @@ spec:
           configMap:
             name: kube-flannel-cfg
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: kube-flannel-ds-s390x
@@ -471,9 +459,6 @@ metadata:
     tier: node
     app: flannel
 spec:
-  selector:
-    matchLabels:
-      app: flannel
   template:
     metadata:
       labels:
@@ -489,7 +474,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: quay.io/coreos/flannel:v0.11.0-s390x
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-s390x
         command:
         - cp
         args:
@@ -503,7 +488,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: quay.io/coreos/flannel:v0.11.0-s390x
+        image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-s390x
         command:
         - /opt/bin/flanneld
         args:
