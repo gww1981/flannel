@@ -172,6 +172,7 @@ spec:
       containers:
       - name: kube-flannel
         image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-amd64
+        imagePullPolicy: Never
         command:
         - /opt/bin/flanneld
         args:
@@ -255,6 +256,7 @@ spec:
       containers:
       - name: kube-flannel
         image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm64
+        imagePullPolicy: Never
         command:
         - /opt/bin/flanneld
         args:
@@ -338,6 +340,7 @@ spec:
       containers:
       - name: kube-flannel
         image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-arm
+        imagePullPolicy: Never
         command:
         - /opt/bin/flanneld
         args:
@@ -421,6 +424,7 @@ spec:
       containers:
       - name: kube-flannel
         image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-ppc64le
+        imagePullPolicy: Never
         command:
         - /opt/bin/flanneld
         args:
@@ -504,6 +508,7 @@ spec:
       containers:
       - name: kube-flannel
         image: quay-mirror.qiniu.com/coreos/flannel:v0.11.0-s390x
+        imagePullPolicy: Never
         command:
         - /opt/bin/flanneld
         args:
